@@ -43,13 +43,14 @@ public class login_frame extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
         getContentPane().add(pw);
-        pw.setBounds(60, 230, 200, 40);
+        pw.setBounds(90, 230, 200, 40);
         getContentPane().add(uname);
-        uname.setBounds(60, 160, 200, 40);
+        uname.setBounds(90, 160, 200, 40);
 
         jButton1.setBackground(new java.awt.Color(102, 204, 255));
         jButton1.setText("LOGIN");
@@ -59,7 +60,7 @@ public class login_frame extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(60, 300, 90, 40);
+        jButton1.setBounds(90, 300, 90, 40);
 
         jPanel1.setBackground(new java.awt.Color(255, 102, 102));
 
@@ -71,7 +72,7 @@ public class login_frame extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jLabel1)
-                .addGap(0, 217, Short.MAX_VALUE))
+                .addGap(0, 287, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -81,7 +82,7 @@ public class login_frame extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 330, 113);
+        jPanel1.setBounds(0, 0, 400, 113);
 
         jButton2.setBackground(new java.awt.Color(255, 102, 204));
         jButton2.setText("SIGN UP");
@@ -91,19 +92,35 @@ public class login_frame extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(170, 300, 90, 40);
+        jButton2.setBounds(200, 300, 90, 40);
 
         jLabel2.setBackground(new java.awt.Color(255, 51, 51));
         jLabel2.setText("Password");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(130, 210, 70, 14);
+        jLabel2.setBounds(160, 210, 70, 14);
 
         jLabel3.setBackground(new java.awt.Color(255, 51, 51));
         jLabel3.setText("Username");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(130, 140, 70, 14);
+        jLabel3.setBounds(160, 140, 70, 14);
 
-        setBounds(0, 0, 325, 404);
+        jPanel2.setBackground(new java.awt.Color(255, 204, 204));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 410, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 280, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel2);
+        jPanel2.setBounds(0, 100, 410, 280);
+
+        setBounds(0, 0, 392, 404);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -187,6 +204,7 @@ public class login_frame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField pw;
     private javax.swing.JTextField uname;
     // End of variables declaration//GEN-END:variables

@@ -26,5 +26,5 @@
     <li>Kelas : XI RPL 2
     <li>No Urut : 27
     <li>NIS : 4825/1544.070
-    <>liNama Sekolah : SMK TELKOM MALANG 
+    <li>Nama Sekolah : SMK TELKOM MALANG 
 </ul>

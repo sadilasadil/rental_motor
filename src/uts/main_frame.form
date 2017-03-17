@@ -254,9 +254,8 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="harga" min="-2" pref="260" max="-2" attributes="0"/>
-                      <Component id="nama" min="-2" pref="260" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="nama" pref="260" max="32767" attributes="0"/>
                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
@@ -264,6 +263,7 @@
                       <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                      <Component id="harga" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace pref="827" max="32767" attributes="0"/>
               </Group>
@@ -337,6 +337,10 @@
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="harga">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Rp 20.000 / Hari"/>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

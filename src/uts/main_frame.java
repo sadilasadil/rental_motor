@@ -7,8 +7,10 @@ package uts;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
 import java.text.MessageFormat;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -212,22 +214,25 @@ public class main_frame extends javax.swing.JFrame {
             }
         });
 
+        harga.setText("Rp 20.000 / Hari");
+        harga.setEnabled(false);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(harga, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nama, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(nama, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5)
                     .addComponent(jLabel6)
                     .addComponent(jLabel7)
                     .addComponent(jLabel8)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel2)
+                    .addComponent(harga))
                 .addContainerGap(827, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -266,12 +271,19 @@ public class main_frame extends javax.swing.JFrame {
         alamat.setText("");
         nostruk.setText("");
         nopol.setText("");
-        harga.setText("");
+        tglpinjam.setDate(null);
+        tglkembali.setDate(null);
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        long a = tglpinjam.getDate().getTime();
+        long b = tglkembali.getDate().getTime();
+        long c = (b - a)/86400000;
+        Integer d = Integer.parseInt(String.valueOf(c));
+        Integer e = d * 20000;
+        
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String tpinjam = dateFormat.format(tglpinjam.getDate());
         String tkembali = dateFormat.format(tglkembali.getDate());
@@ -279,18 +291,18 @@ public class main_frame extends javax.swing.JFrame {
                 "".equals(alamat.getText())||
                 "".equals(nostruk.getText())||
                 "".equals(nopol.getText())||
-                tpinjam.equals("")||tkembali.equals("")||
-                "".equals(harga.getText()))
+                tpinjam.equals("")||tkembali.equals(""))
         {
             JOptionPane.showMessageDialog(this, "Harap Lengkapi Data","Error",JOptionPane.WARNING_MESSAGE);
         }
         else{
-            String SQL = "INSERT INTO tb_motor VALUES('"+nama.getText()+"','"
+            
+            String SQL = "INSERT INTO tb_rental VALUES('"+nama.getText()+"','"
                     +alamat.getText()+"','"
                     +nostruk.getText()+"','"
                     +nopol.getText()+"','"
                     +tpinjam+"','"+tkembali+"','"
-                    +harga.getText()+"')";
+                    +e+"')";
             int status = KoneksiDB.execute(SQL);
             if(status==1){
                 JOptionPane.showMessageDialog(this, "Data berhasil ditambahkan","Sukses",JOptionPane.INFORMATION_MESSAGE);

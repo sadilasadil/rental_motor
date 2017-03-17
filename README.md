@@ -9,6 +9,9 @@
 ![image](https://cloud.githubusercontent.com/assets/18629663/24001069/a9c3bd34-0a8f-11e7-8450-7ec2861c5d18.png)
 ### Refresh
 ![image](https://cloud.githubusercontent.com/assets/18629663/24001085/bc8497cc-0a8f-11e7-9b96-7822315468fb.png)
+### Save
+![image](https://cloud.githubusercontent.com/assets/18629663/24026064/2636235a-0af1-11e7-99ad-6beaeeb10efa.png)
+![image](https://cloud.githubusercontent.com/assets/18629663/24026083/41a4a58a-0af1-11e7-86bd-f7d9f2597e85.png)
 ### Delete
 ![image](https://cloud.githubusercontent.com/assets/18629663/24001115/d4250f74-0a8f-11e7-99ac-6ebee009cbc6.png)
 ![image](https://cloud.githubusercontent.com/assets/18629663/24001139/e57b4fa4-0a8f-11e7-8497-0409163a7cc9.png)

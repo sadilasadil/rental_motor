@@ -22,6 +22,8 @@
 ![image](https://cloud.githubusercontent.com/assets/18629663/24001232/2b785416-0a90-11e7-8a40-5c1c114261be.png)
 ### Log Out
 ![image](https://cloud.githubusercontent.com/assets/18629663/24001265/43e80c58-0a90-11e7-9c47-42b787392877.png)
+### Search
+![image](https://cloud.githubusercontent.com/assets/18629663/25214811/c55fad6a-25c3-11e7-8c28-53943b593d8a.png)
 
 # Identitas
 <ul>

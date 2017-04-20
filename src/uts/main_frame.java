@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.MessageFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
@@ -47,8 +48,6 @@ public class main_frame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tbdata = new javax.swing.JTable();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         nopol = new javax.swing.JTextField();
@@ -64,6 +63,10 @@ public class main_frame extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         nama = new javax.swing.JTextField();
         harga = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbdata = new javax.swing.JTable();
+        jButton2 = new javax.swing.JButton();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 204, 102));
@@ -118,30 +121,6 @@ public class main_frame extends javax.swing.JFrame {
         });
         getContentPane().add(jButton3);
         jButton3.setBounds(440, 440, 90, 30);
-
-        tbdata.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Nama Peminjam", "Alamat Peminjam", "No Struk", "No Polisi", "Tanggal Pinjam", "Tanggal Kembali", "Harga"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                true, true, true, true, true, true, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(tbdata);
-
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(330, 140, 730, 220);
 
         jButton4.setBackground(new java.awt.Color(255, 204, 204));
         jButton4.setText("Delete");
@@ -217,6 +196,34 @@ public class main_frame extends javax.swing.JFrame {
         harga.setText("Rp 20.000 / Hari");
         harga.setEnabled(false);
 
+        tbdata.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Nama Peminjam", "Alamat Peminjam", "No Struk", "No Polisi", "Tanggal Pinjam", "Tanggal Kembali", "Harga"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                true, true, true, true, true, true, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tbdata);
+
+        jButton2.setText("Search");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -233,7 +240,16 @@ public class main_frame extends javax.swing.JFrame {
                     .addComponent(jLabel8)
                     .addComponent(jLabel2)
                     .addComponent(harga))
-                .addContainerGap(827, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 730, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(53, 53, 53))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -241,16 +257,25 @@ public class main_frame extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nama, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(43, 43, 43)
-                .addComponent(jLabel4)
-                .addGap(48, 48, 48)
-                .addComponent(jLabel5)
-                .addGap(44, 44, 44)
-                .addComponent(jLabel6)
-                .addGap(46, 46, 46)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(nama, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                        .addComponent(jLabel3)
+                        .addGap(43, 43, 43)
+                        .addComponent(jLabel4)
+                        .addGap(48, 48, 48)
+                        .addComponent(jLabel5)
+                        .addGap(44, 44, 44)
+                        .addComponent(jLabel6)
+                        .addGap(46, 46, 46))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jLabel7)
                 .addGap(42, 42, 42)
                 .addComponent(jLabel8)
@@ -341,7 +366,7 @@ public class main_frame extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
-         MessageFormat header = new MessageFormat("");
+         MessageFormat header = new MessageFormat("Data Pelanggan Rental Saya");
         MessageFormat footer = new MessageFormat("Page {0,number,integer}        ");
         try{
             tbdata.print(JTable.PrintMode.FIT_WIDTH, header, footer, true, null, true, null);
@@ -359,6 +384,15 @@ public class main_frame extends javax.swing.JFrame {
     private void namaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_namaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_namaActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        try {
+            search();
+        } catch (ParseException ex) {
+            Logger.getLogger(main_frame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -399,11 +433,13 @@ public class main_frame extends javax.swing.JFrame {
     private javax.swing.JTextField alamat;
     private javax.swing.JTextField harga;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -445,5 +481,37 @@ public class main_frame extends javax.swing.JFrame {
             Logger.getLogger(main_frame.class.getName()).log(Level.SEVERE, null, ex);
         }
         tbdata.setModel(dtm);
+    }
+
+    private void search() throws ParseException  {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String date = dateFormat.format(jDateChooser1.getDate());
+        String kolom[] = {"Nama Peminjam","Alamat Peminjam","No Struk","No Polisi","Tanggal Pinjam","Tanggal Kembali","Harga"};
+        DefaultTableModel dtm = new DefaultTableModel(null, kolom);
+        //SELECT * FROM `rental` WHERE tgl_pinjam <= 101217 AND tgl_kembali >= 101217
+        String SQL = "SELECT * FROM tb_rental WHERE TglPinjam <= '"+date+"' AND TglKembali >= '"+date+"' ";
+        System.out.println(SQL);
+        ResultSet rs = KoneksiDB.executeQuery(SQL);
+        try{
+            while(rs.next()) {
+                String nama = rs.getString(1);
+                String alamat = rs.getString(2);
+                String nostruk = rs.getString(3);
+                String nopol = rs.getString(4);
+                String tpinjam = rs.getString(5);
+                String tkembali = rs.getString(6);
+                String harga = rs.getString(7);
+                Date pinjam = new SimpleDateFormat("yyyy-MM-dd").parse(tpinjam);
+                Date kembali = new SimpleDateFormat("yyy-MM-dd").parse(tkembali);
+                long intHarga = ((kembali.getTime() - pinjam.getTime())/ (1000 * 60 * 60 * 24))*20000;
+                String Harga = String.valueOf(intHarga);
+                String data[] = {nama,alamat,nostruk,nopol,tpinjam,tkembali,harga};
+                dtm.addRow(data);
+            }
+        } catch (SQLException ex){
+            Logger.getLogger(main_frame.class.getName()).log(Level.SEVERE,null,ex);
+        }
+        tbdata.setModel(dtm);
+       
     }
 }
